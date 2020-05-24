@@ -53,10 +53,10 @@ fn main() {
         let currentTime = splitUntil(&mut lines[9].to_string(), String::from("CurrentTime: "));
 
         // Time ==================
-        let time = String::from("[") + &currentTime + &'/'.to_string() + &totalTime + &']'.to_string();
+        let time = String::from("[") + &currentTime + &String::from(" / ") + &totalTime + &']'.to_string();
 
         // FINAL MESSAGE ======================================================================
-        println!("    ♫     {} {} {}", name, status, time);
+        println!("    ♫      {}  {}  {}", name, status, time);
     }
 
 }
