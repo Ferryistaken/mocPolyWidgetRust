@@ -29,8 +29,10 @@ fn main() {
     output = output.replace("\n", "||");
     let mut lines: Vec<&str> = output.split("||").collect();
 
-    if output.contains("The server is not running!") {
-        println!("No song currently playing");
+    //if output.contains("The server is not running!") {
+    //    println!("No song currently playing");
+    if output == "" {
+        println!("    ♫    Server not running ");
     } else {
         // STATUS ==============================================================================
         let mut status = splitUntil(&mut lines[0].to_string(), String::from("State: "));
