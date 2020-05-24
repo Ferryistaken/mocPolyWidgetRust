@@ -33,7 +33,9 @@ fn main() {
     //    println!("No song currently playing");
     if output == "" {
         println!("    ♫    Server not running ");
-    } else {
+    } else if lines.len() == 2 {
+        println!("    ♫    No song is playing");
+    } else if lines.len() > 6 {
         // STATUS ==============================================================================
         let mut status = splitUntil(&mut lines[0].to_string(), String::from("State: "));
         if status == "PLAY" {
