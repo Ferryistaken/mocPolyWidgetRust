@@ -5,7 +5,7 @@ This program was created to display info about currently playing song from mocp 
 
 ## Dependencies
 ```cargo```\
-```mocp```\
+```mocp```
 
 ## Installation
 Paste this inside of a terminal \
