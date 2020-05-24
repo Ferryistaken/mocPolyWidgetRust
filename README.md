@@ -1,6 +1,6 @@
 # MocPolyWidget
 
-This program was created to display info about currently playing song from mocp server
+This program was created to display info about currently playing song from mocp server\
 ```!Note: this doesn't use the song metadata, but the actual file name```
 
 ## Dependencies
