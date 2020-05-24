@@ -4,7 +4,8 @@ This program was created to display info about currently playing song from mocp 
 ```!Note: this doesn't use the song metadata, but the actual file name```
 
 ## Dependencies
-```cargo```
+```cargo```\
+```mocp```\
 
 ## Installation
 Paste this inside of a terminal \
