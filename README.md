@@ -14,4 +14,4 @@ Paste this inside of a terminal \
 ```cargo build --release```\
 ```sudo mv target/release/mocPolyWidget /usr/bin/mocPolyWidget```
 
-Now the executable should be in your path and ready to be used anywhere
+Now the executable should be in your path and ready to be used anywhere by calling ```mocPolyWidget```
