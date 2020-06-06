@@ -29,8 +29,7 @@ fn main() {
     output = output.replace("\n", "||");
     let mut lines: Vec<&str> = output.split("||").collect();
 
-    //if output.contains("The server is not running!") {
-    //    println!("No song currently playing");
+    //TODO: this sometimes randomly gets triggered in the middle of songs, don't know how"
     if output == "" {
         println!("    ♫    Server not running ");
     } else if lines.len() == 2 {
@@ -60,7 +59,7 @@ fn main() {
         let time = String::from("[") + &currentTime + &String::from(" / ") + &totalTime + &']'.to_string();
 
         // FINAL MESSAGE ======================================================================
-        println!("    ♫      {}  {}  {}", name, status, time);
+        println!("    ♫      {}  {}  {}  ", name, status, time);
     }
 
 }
