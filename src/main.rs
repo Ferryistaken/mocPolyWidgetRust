@@ -20,16 +20,48 @@ fn getName(string: &mut String) -> String {
     return name;
 }
 
+fn makeSeconds(minutes: &String) -> i32 {
+    let splitted: Vec<&str> = minutes.rsplit(":").collect();
+
+    let minutes = splitted[splitted.len() -1].to_string().parse::<i32>().unwrap();
+    let seconds = splitted[0].to_string().parse::<i32>().unwrap();
+
+    return minutes * 60 + seconds;
+}
+
+fn makeStatusBar(totalTime: i32, currentTime: i32) -> String {
+    // [ ――ᐅ――――――― ] ─
+    // I honestly have no idea of how to do this in a better way, this is extremely hacky
+    let percentage = (currentTime * 10) / totalTime;
+    let progressBar: String = String::from("[");
+    let progressBar = match percentage {
+        0 => progressBar + &String::from(" ▶───────── ]"),
+        1 => progressBar + &String::from(" ─▶──────── ]"),
+        2 => progressBar + &String::from(" ──▶─────── ]"),
+        3 => progressBar + &String::from(" ───▶────── ]"),
+        4 => progressBar + &String::from(" ────▶───── ]"),
+        5 => progressBar + &String::from(" ─────▶──── ]"),
+        6 => progressBar + &String::from(" ──────▶─── ]"),
+        7 => progressBar + &String::from(" ───────▶── ]"),
+        8 => progressBar + &String::from(" ────────▶ ]"),
+        9 => progressBar + &String::from(" ────────▶ ]"),
+        10 => progressBar + &String::from(" ───────▶ ]"),
+        _ => return String::from("[     :(     ]")
+    };
+    return progressBar;
+}
+
 
 fn main() {
     // execute command, will return an array of u8 (ascii codes)
+    let progressBarOn = true;
     let commandOut = Command::new("mocp").arg("-i").output().expect("Failed to execute command");
     let mut output = makeString(&commandOut.stdout);
     // this is for ease of use
     output = output.replace("\n", "||");
     let mut lines: Vec<&str> = output.split("||").collect();
 
-    //TODO: this sometimes randomly gets triggered in the middle of songs, don't know how"
+    //TODO: this sometimes randomly gets triggered in the middle of songs, don't know how" ─
     if output == "" {
         println!("    ♫    Server not running ");
     } else if lines.len() == 2 {
@@ -59,7 +91,12 @@ fn main() {
         let time = String::from("[") + &currentTime + &String::from(" / ") + &totalTime + &']'.to_string();
 
         // FINAL MESSAGE ======================================================================
-        println!("    ♫      {}  {}  {}  ", name, status, time);
+        if progressBarOn == true {
+        println!("    ♫      {}  {}  {}  {}", name, status, time, makeStatusBar(makeSeconds(&totalTime), makeSeconds(&currentTime)));
+        } else {
+        println!("    ♫      {}  {}  {} ", name, status, time);
+        }
+
     }
 
 }
