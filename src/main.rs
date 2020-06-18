@@ -43,8 +43,8 @@ fn makeStatusBar(totalTime: i32, currentTime: i32) -> String {
         5 => progressBar + &String::from(" ─────▶──── ]"),
         6 => progressBar + &String::from(" ──────▶─── ]"),
         7 => progressBar + &String::from(" ───────▶── ]"),
-        8 => progressBar + &String::from(" ────────▶ ]"),
-        9 => progressBar + &String::from(" ────────▶ ]"),
+        8 => progressBar + &String::from(" ────────▶  ]"),
+        9 => progressBar + &String::from(" ────────▶  ]"),
         10 => progressBar + &String::from(" ───────▶ ]"),
         _ => return String::from("[     :(     ]")
     };
@@ -92,9 +92,9 @@ fn main() {
 
         // FINAL MESSAGE ======================================================================
         if progressBarOn == true {
-        println!("    ♫      {}  {}  {}  {}", name, status, time, makeStatusBar(makeSeconds(&totalTime), makeSeconds(&currentTime)));
+        println!("  ♫    {}  {}  {}  {}", name, status, time, makeStatusBar(makeSeconds(&totalTime), makeSeconds(&currentTime)));
         } else {
-        println!("    ♫      {}  {}  {} ", name, status, time);
+        println!("   ♫    {}  {}  {} ", name, status, time);
         }
 
     }
